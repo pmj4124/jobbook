@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace = "com.jobbook.site.login.dao.KakaoLoginDAO">
+	<insert id = "insertUser" parameterType = "map">
+ 		INSERT INTO `kakaouser` (
+ 		`code`
+ 		,`createdAt`
+ 		,`updatedAt`
+ 		)VALUES(
+  		#{code}
+		,now()
+		,now()
+ 		)
+ 	</insert>
+ 	
+ 	<insert id = "saveUser" parameterType = "map">
+ 		INSERT INTO `kakaouser` (
+ 		`kakaoid`
+ 		,`nickname`
+ 		,`profile_image`
+ 		,`createdAt`
+ 		,`updatedAt`
+ 		)VALUES(
+  		#{kakaoid}
+  		,#{nickname}
+  		,#{profile_image}
+		,now()
+		,now()
+ 		)
+ 	</insert>
+ 	
+ 	
+ 		<select id = "selectUser" parameterType = "map" resultType ="com.jobbook.site.model.KakaoUser">
+ 	SELECT
+ 		`id`
+ 		,`code`
+ 		,`createdAt`
+ 		,`updatedAt`
+ 	FROM
+ 		`kakaouser`
+ 	WHERE
+ 		`code` = #{code}
+
+ 	</select>
+ </mapper>

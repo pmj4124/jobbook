@@ -1,0 +1,1 @@
+package com.jobbook.site.post.bo;

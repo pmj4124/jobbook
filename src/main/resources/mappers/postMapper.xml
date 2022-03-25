@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace = "com.jobbook.site.post.dao.PostDAO">
+ 
+ <insert id = "insertPost" parameterType="com.jobbook.site.model.Post" useGeneratedKeys="true" keyProperty="id">
+ 		INSERT 
+ 		 INTO `post`
+ 		(
+ 		 `userId`
+ 		 ,`userName`
+ 		 ,`movieURL`
+ 		 ,`tag`
+ 		 ,`createdAt`
+ 		 ,`updatedAt`
+ 		) VALUES(
+ 		#{userId}
+ 		,#{userName}
+ 		,#{movieURL}
+ 		,#{tag}
+ 		,now()
+ 		,now()
+ 		)  
+</insert>
+
+<select id = "selectPost" resultType = "com.jobbook.site.model.Post">
+ 	SELECT
+ 		`id`
+ 		,`userId`
+ 		 ,`movieURL`
+ 		 ,`tag`
+ 		 ,`createdAt`
+ 		 ,`updatedAt`
+ 	FROM
+ 		`post`
+ 	WHERE
+ 		`id` = #{id}
+ </select>
+ 
+ 	<select id ="selectAllPost" resultType = "com.jobbook.site.model.Post" parameterType="map">
+ 	SELECT
+ 			`id`
+ 			,`userId`
+ 			,`userName`
+ 			,`movieURL`
+ 			, `tag`
+ 		FROM
+ 			`post`
+ 		ORDER BY
+ 			`id`DESC 
+ 	</select>
+ 
+ </mapper>

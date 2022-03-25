@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace = "com.jobbook.site.tag.dao.TagDAO">
+ 
+  <insert id = "addTag" parameterType="map">
+ 		INSERT INTO `tag`
+ 		(
+ 		 `userId`
+ 		 ,`postId`
+ 		 ,`tag`
+ 		 ,`createdAt`
+ 		 ,`updatedAt`
+ 		) VALUES(
+ 		#{userId}
+ 		,#{postId}
+ 		,#{tag}
+ 		,now()
+ 		,now()
+ 		)
+ 	
+ 	</insert>
+ 
+ <select id ="searchTag" resultType = "com.jobbook.site.model.Tag" parameterType="map">
+ 	SELECT
+ 			`id`
+ 		 ,`userId`
+ 		 ,`postId`
+ 		 ,`tag`
+ 		 ,`createdAt`
+ 		 ,`updatedAt`
+ 		FROM
+ 			`tag`
+	 	WHERE
+	 		`tag` = #{searchTag}
+ 		ORDER BY
+ 			`id`DESC 
+ 	</select>
+ </mapper>
