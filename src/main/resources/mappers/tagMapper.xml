@@ -22,6 +22,7 @@
  	</insert>
  
  <select id ="searchTag" resultType = "com.jobbook.site.model.Tag" parameterType="map">
+ //awstest
  	SELECT
  			`id`
  		 ,`userId`
